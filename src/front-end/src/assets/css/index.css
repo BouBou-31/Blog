@@ -1,30 +1,114 @@
 /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-body{
-  margin: 20px 40px;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  background: #fafafa;
-}
-h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer, object{
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
-  color: #444;
+  box-sizing: border-box;
 }
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  overflow: hidden;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  /*z-index: 1;*/
+  /*background: #fafafa;*/
+}
+
+h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer, object{
+  margin: 0;
+  padding: 20;
+  font-family: 'Quicksand', sans-serif;
+  color: #ffffff;
+}
+
 ul{
   list-style-type: none;
 }
 a{
   text-decoration: none;
 }
+
 nav{
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center; /* Aligne verticalement tous les éléments dans le conteneur */
   margin-bottom: 20px;
+  margin-left: 40px;
 }
+
+.navigation a{
+  margin-left: 50px;
+  position: relative;
+  display: flex; /* Active Flexbox */
+  align-items: center; /* Aligne le texte verticalement */
+  line-height: 50px; /* Même hauteur que le bouton */
+}
+
+.navigation a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 5px; /* Ajuste la position pour un effet de double ligne */
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.navigation a:hover::after {
+  transform: scaleX(1); /* Première ligne */
+}
+
+.navigation a::after {
+  content: '';
+  position: absolute;
+  left: -10%;
+  bottom: 0;
+  width: 120%;
+  height: 3px;
+  background: radial-gradient(circle, #fff, transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s ease-out;
+}
+
+.navigation a:hover::after {
+  transform: scaleX(1); /* S'étend horizontalement */
+}
+
+.navigation .btnLogin-popup{
+  display: flex; /* Active Flexbox */
+  align-items: center; /* Aligne verticalement le texte dans le bouton */
+  justify-content: center; /* Optionnel : centre le texte horizontalement */
+  background: transparent;
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 16px;
+  width: auto; /* S'ajuste au texte */
+  height: auto; /* S'ajuste au texte */
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  box-sizing: border-box; /* Inclut padding et border dans les dimensions */
+  transition: 0.2s;
+}
+
+.navigation .btnLogin-popup:hover{
+  background:rgb(255, 255, 255);
+  color: rgb(0, 0, 0)
+}
+
 nav ul{
   display: flex;
   align-items: center;
@@ -69,16 +153,16 @@ label{
   margin: 20px 0 10px;
 }
 button{
-  margin-top: 30px;
+  /* margin-top: 30px; */
   border-radius: 36px;
-  background: #FEE996;
-  border:0;
-  text-transform: uppercase;
+  /*background: #FEE996;*/
+  border: 1px;
+  text-transform: uppercase; 
   font-weight: 700;
   font-size: 0.8em;
   display: block;
   padding: 10px 16px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 .error{
   color: #ff0099;
@@ -87,8 +171,27 @@ button{
   font-weight: bold;
 }
 header{
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
   display: flex;
+  margin: 20px;
+  padding: 10px 20px;
+  margin-left: 10;
+  /*background: #ffffff;*/
+  justify-content: space-between;
   align-items: center;
+  /*z-index: 99;*/
+}
+header h1 {
+  align-self: center; /* Aligne le h1 au centre vertical */
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0; /* Supprime tout padding accidentel */
+  margin-right: 20px; /* Ajustez l'espacement entre le h1 et le menu */
+  line-height: 50px; /* Même hauteur que le bouton */
+  font-size: 1.5em; /* Ajustez si nécessaire */
+  transform: translateY(-20px); /* Ajustement manuel au besoin */
 }
 header h2{
   font-size: 3em;
@@ -100,14 +203,24 @@ header h3{
   margin-left: 2px;
   color: #999;
 }
-header .btn{
+.btnLogin-popup {
+  height: 50px; /* Assure une hauteur uniforme */
+  display: flex;
+  position:static;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px; /* Créez un espacement entre le bouton et les autres liens */
+  margin-top: 5px; /* Ajustez si nécessaire */
+  margin-right: 100px;
+}
+/*header .btn{
   margin-top: 20px;
   padding: 12px 18px;
   text-transform: uppercase;
   font-weight: bold;
   display: inline-block;
   font-size: 0.8em;
-}
+}*/
 
 footer{
   text-align: center;
@@ -117,24 +230,72 @@ footer{
 
 .modal {
   display: none;
-  position: fixed; 
+  position: fixed;
   padding-top: 50px;
-  left: 0; 
+  left: 0;
   top: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
 }
 .modal-content {
-    position: relative; 
+    position: relative;
     background-color: white;
-    padding: 20px; 
-    margin: auto; 
-    width: 50%;  
+    padding: 20px;
+    margin: auto;
+    width: 50%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*.App {
+  text-align: center;
+}*/
+
+.App-body {
+  /*background-color: #282c34;*/
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #fb6182;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajuste la vidéo pour qu'elle couvre tout l'écran */
+  z-index: -1; /* Place la vidéo derrière les autres éléments */
+}
+
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    margin: 10px;
+    padding: 5px;
+    align-items: center;
+  }
+
+  header h1 {
+    transform: translateY(0px);
+    margin-right: 0; /* Supprime les marges pour l'affichage en colonne */
+    margin-bottom: 10px; /* Ajoute un espacement entre les éléments */
+  }
+  .navigation a {
+    margin-left: 40px;
+  }
 }

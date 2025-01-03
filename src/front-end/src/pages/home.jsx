@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import videoSource from "./../assets/background-homepage.mp4";
 
 function Home() {
     const [data, setData] = useState(null);
@@ -16,8 +17,13 @@ function Home() {
     }, []);
 
     return (
+        <body>
         <div className="App">
-            <header className="App-header">
+            <div className="App-body">
+                <video className="video-background" autoPlay muted loop>
+                    <source src={videoSource} type="video/mp4" />
+                    Votre navigateur ne supporte pas les vidéos HTML5.
+                </video>
                 <p>
                 Coucou ma vie
                 </p>
@@ -29,8 +35,9 @@ function Home() {
                 >
                 Clique
                 </a>
-            </header>
+            </div>
         </div>
+        </body>
     );
 }
 

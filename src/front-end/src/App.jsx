@@ -1,4 +1,4 @@
-import './assets/css/App.css';
+import './assets/css/index.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import CommonLayout from "./layouts/CommonLayout";
