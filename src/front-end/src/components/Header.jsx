@@ -1,14 +1,14 @@
 import React from "react";
 
-function Header() {
+function Header({ onLoginClick }) {
   return (
     <header>
       <h1>Mon Site</h1>
-      <nav class="navigation">
+      <nav className="navigation">
         <a href='#'>Accueil</a>
         <a href='#'>Apprendre</a>
         <a href='#'>A propos</a>
-        <button class="btnLogin-popup">Se connecter</button>
+        <button className="btnLogin-popup" onClick={onLoginClick}>Se connecter</button>
       </nav>
 
     </header>

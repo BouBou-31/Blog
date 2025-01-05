@@ -17,7 +17,7 @@ function Home() {
     }, []);
 
     return (
-        <body>
+        <div className="home-page">
         <div className="App">
             <div className="App-body">
                 <video className="video-background" autoPlay muted loop>
@@ -37,7 +37,7 @@ function Home() {
                 </a>
             </div>
         </div>
-        </body>
+        </div>
     );
 }
 
